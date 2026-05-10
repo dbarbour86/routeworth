@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0d10" />
+    <title>RouteWorth</title>
+    <meta name="description" content="Quick route profit calculator for independent medical couriers and contract drivers." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="shell hero-shell">
+        <nav class="topbar" aria-label="RouteWorth">
+          <div class="brand-lockup">
+            <div class="brand-mark">RW</div>
+            <div>
+              <p class="brand-name">RouteWorth</p>
+              <p class="brand-sub">Courier route calculator</p>
+            </div>
+          </div>
+          <a class="nav-pill" href="#calculator">Open</a>
+        </nav>
+
+        <div class="hero-grid">
+          <header class="hero-copy">
+            <p class="eyebrow">Live route math</p>
+            <h1>Is This Courier Route Worth It?</h1>
+            <p class="subhead">Quickly calculate real route profits for medical couriers, independent drivers, and delivery contractors.</p>
+            <div class="hero-actions">
+              <a class="primary-action" href="#calculator">Calculate Route Profit</a>
+              <p class="inline-note">Built for fast checks before you accept.</p>
+            </div>
+          </header>
+
+          <section class="calculator-grid" id="calculator" aria-label="Route profit calculator">
+            <form class="calculator-card" id="route-form">
+              <div class="section-heading">
+                <div>
+                  <p class="eyebrow">Calculator</p>
+                  <h2>Route numbers</h2>
+                </div>
+                <span class="version-pill">V1</span>
+              </div>
+              <div class="field-stack" id="field-stack"></div>
+            </form>
+
+            <aside class="results-card" aria-live="polite">
+              <div class="result-head">
+                <div>
+                  <p class="eyebrow blue">Live result</p>
+                  <output class="net-profit" id="net-profit">$0.00</output>
+                  <p class="result-caption">Estimated net profit</p>
+                </div>
+                <span class="rating-badge" id="rating-badge">Bad</span>
+              </div>
+              <p class="rating-copy" id="rating-copy">Route details are missing or the current numbers do not cover the operating cost.</p>
+              <div class="metric-stack">
+                <div class="metric-row"><span>Estimated fuel cost</span><output id="fuel-cost">$0.00</output></div>
+                <div class="metric-row"><span>Estimated maintenance cost</span><output id="maintenance-cost">$0.00</output></div>
+                <div class="metric-row"><span>Estimated tax deduction value</span><output id="tax-deduction">$0.00</output></div>
+                <div class="metric-row accent"><span>Profit per mile</span><output id="profit-mile">$0.00</output></div>
+                <div class="metric-row accent"><span>Effective hourly rate</span><output id="hourly-rate">$0.00</output></div>
+              </div>
+              <div class="thresholds" aria-label="Route rating thresholds">
+                <div><strong class="bad-text">Bad</strong><span>&lt; $20/hr</span></div>
+                <div><strong class="watch-text">Watch</strong><span>$20-29/hr</span></div>
+                <div><strong class="good-text">Good</strong><span>$30+/hr</span></div>
+              </div>
+            </aside>
+          </section>
+        </div>
+      </section>
+
+      <section class="info-band">
+        <div class="shell info-grid">
+          <article class="info-card"><p>Hourly</p><h2>Know your true hourly pay</h2><span>See what the route pays after time, fuel, and vehicle wear are counted.</span></article>
+          <article class="info-card"><p>Margin</p><h2>Avoid low-profit routes</h2><span>Spot offers that look fine up front but fall apart after operating costs.</span></article>
+          <article class="info-card"><p>Speed</p><h2>Compare route offers instantly</h2><span>Run numbers while you are parked, between dispatches, or before accepting.</span></article>
+        </div>
+      </section>
+
+      <section class="shell future-section">
+        <div class="future-heading">
+          <div><p class="eyebrow muted">Coming soon</p><h2>Future tools</h2></div>
+          <p>RouteWorth is structured so these can become separate calculators without rebuilding the app.</p>
+        </div>
+        <div class="future-grid">
+          <article>Multi-Route Stack Planner<span>Coming soon</span></article>
+          <article>Mileage Deduction Calculator<span>Coming soon</span></article>
+          <article>Courier Expense Tracker<span>Coming soon</span></article>
+          <article>Anonymous Route Board<span>Coming soon</span></article>
+          <article>Weekly Earnings Planner<span>Coming soon</span></article>
+        </div>
+      </section>
+
+      <footer>Built for independent couriers.</footer>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
