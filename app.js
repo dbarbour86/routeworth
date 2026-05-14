@@ -19,6 +19,19 @@ const fields = [
 ];
 
 const state = { ...defaults };
+const inputChanges = new Set();
+const trackedRatings = new Set();
+let calculatorUsedTracked = false;
+let lastRatingKind = "";
+
+const analyticsEvents = {
+  calculatorUsed: "calculator_used",
+  routeRatedGood: "route_rated_good",
+  routeRatedBad: "route_rated_bad",
+  shareClicked: "share_clicked",
+  compareRouteStarted: "compare_route_started",
+};
+
 const money = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
@@ -27,6 +40,54 @@ const money = new Intl.NumberFormat("en-US", {
 
 function positive(value) {
   return Number.isFinite(value) && value > 0 ? value : 0;
+}
+
+function trackEvent(eventName, payload = {}) {
+  if (window.umami && typeof window.umami.track === "function") {
+    window.umami.track(eventName, payload);
+  }
+}
+
+function hasValidRouteInputs(inputs) {
+  return ["payout", "miles", "hours", "mpg", "gasPrice"].every((key) => positive(inputs[key]) > 0);
+}
+
+function trackCalculationEvents(result) {
+  if (inputChanges.size === 0) {
+    lastRatingKind = result.rating.kind;
+    return;
+  }
+
+  if (!calculatorUsedTracked && inputChanges.size >= 3 && hasValidRouteInputs(state)) {
+    calculatorUsedTracked = true;
+    trackEvent(analyticsEvents.calculatorUsed, {
+      rating: result.rating.kind,
+    });
+  }
+
+  if (result.rating.kind === lastRatingKind) {
+    return;
+  }
+
+  lastRatingKind = result.rating.kind;
+
+  if (result.rating.kind === "good" && !trackedRatings.has("good")) {
+    trackedRatings.add("good");
+    trackEvent(analyticsEvents.routeRatedGood);
+  }
+
+  if (result.rating.kind === "bad" && !trackedRatings.has("bad")) {
+    trackedRatings.add("bad");
+    trackEvent(analyticsEvents.routeRatedBad);
+  }
+}
+
+function bindTrackedActions() {
+  document.querySelectorAll("[data-track-event]").forEach((element) => {
+    element.addEventListener("click", () => {
+      trackEvent(element.dataset.trackEvent);
+    });
+  });
 }
 
 function getRating(hourlyRate, profitPerMile) {
@@ -108,6 +169,7 @@ function renderFields() {
   fields.forEach((field) => {
     document.querySelector(`#${field.key}`).addEventListener("input", (event) => {
       const nextValue = Number.parseFloat(event.target.value);
+      inputChanges.add(field.key);
       state[field.key] = Number.isFinite(nextValue) ? nextValue : 0;
       renderResults();
     });
@@ -132,7 +194,10 @@ function renderResults() {
 
   badge.textContent = result.rating.label;
   badge.className = `rating-badge ${result.rating.kind}`;
+
+  trackCalculationEvents(result);
 }
 
 renderFields();
 renderResults();
+bindTrackedActions();
