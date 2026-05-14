@@ -120,9 +120,6 @@ export default function Home() {
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white/42">Coming soon</p>
             <h2 className="mt-2 text-2xl font-black tracking-tight text-white">Future tools</h2>
           </div>
-          <p className="hidden max-w-sm text-right text-sm text-white/50 sm:block">
-            RouteWorth is structured so these can become separate calculators without rebuilding the app.
-          </p>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {futureTools.map((tool) => (
