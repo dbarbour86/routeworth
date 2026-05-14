@@ -1,0 +1,35 @@
+.result-actions {
+  margin: -0.35rem 0 1rem;
+}
+
+.secondary-action,
+.future-tool button {
+  min-height: 2.75rem;
+  border: 1px solid rgb(15 163 251 / 0.36);
+  border-radius: 0.95rem;
+  background: rgb(15 163 251 / 0.1);
+  color: #9bdcff;
+  cursor: pointer;
+  font-weight: 800;
+  transition: border-color 180ms, background 180ms, transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.secondary-action {
+  width: 100%;
+}
+
+.secondary-action:hover,
+.future-tool button:hover {
+  border-color: rgb(15 163 251 / 0.72);
+  background: rgb(15 163 251 / 0.16);
+  transform: translateY(-1px);
+}
+
+.future-tool button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.9rem;
+  padding-inline: 0.85rem;
+  font-size: 0.78rem;
+}
