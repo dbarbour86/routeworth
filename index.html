@@ -56,6 +56,9 @@
                 <span class="rating-badge" id="rating-badge">Bad</span>
               </div>
               <p class="rating-copy" id="rating-copy">Route details are missing or the current numbers do not cover the operating cost.</p>
+              <div class="result-actions">
+                <button class="secondary-action" type="button" data-track-event="share_clicked">Share route</button>
+              </div>
               <div class="metric-stack">
                 <div class="metric-row"><span>Estimated fuel cost</span><output id="fuel-cost">$0.00</output></div>
                 <div class="metric-row"><span>Estimated maintenance cost</span><output id="maintenance-cost">$0.00</output></div>
@@ -87,7 +90,11 @@
           <p>RouteWorth is structured so these can become separate calculators without rebuilding the app.</p>
         </div>
         <div class="future-grid">
-          <article>Multi-Route Stack Planner<span>Coming soon</span></article>
+          <article class="future-tool">
+            Multi-Route Stack Planner
+            <button type="button" data-track-event="compare_route_started">Open preview</button>
+            <span>Coming soon</span>
+          </article>
           <article>Mileage Deduction Calculator<span>Coming soon</span></article>
           <article>Courier Expense Tracker<span>Coming soon</span></article>
           <article>Anonymous Route Board<span>Coming soon</span></article>
