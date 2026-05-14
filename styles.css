@@ -39,7 +39,7 @@ input {
 }
 
 .hero-shell {
-  padding-block: 1.25rem 3rem;
+  padding-block: 1.15rem 2.75rem;
 }
 
 .topbar {
@@ -47,7 +47,7 @@ input {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.1rem;
   padding: 0.75rem 1rem;
   border: 1px solid rgb(255 255 255 / 0.08);
   border-radius: 999px;
@@ -117,7 +117,7 @@ input {
 
 .hero-grid {
   display: grid;
-  gap: 2rem;
+  gap: 1.9rem;
 }
 
 .hero-copy {
@@ -157,8 +157,8 @@ h2 {
 }
 
 h1 {
-  max-width: 42rem;
-  font-size: clamp(3.05rem, 13vw, 5.9rem);
+  max-width: 44rem;
+  font-size: clamp(3rem, 12vw, 5.35rem);
   font-weight: 950;
   line-height: 0.94;
 }
@@ -185,7 +185,7 @@ h1 {
 }
 
 .subhead {
-  max-width: 38rem;
+  max-width: 40rem;
   margin: 1.25rem 0 0;
   color: rgb(255 255 255 / 0.68);
   font-size: clamp(1.06rem, 4vw, 1.25rem);
@@ -642,23 +642,38 @@ footer {
 }
 
 @media (min-width: 64rem) {
+  .hero-shell {
+    padding-block: 1.25rem 3rem;
+  }
+
+  .topbar {
+    margin-bottom: 2.25rem;
+  }
+
   .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 1fr !important;
+    align-items: start;
+    gap: 2rem;
   }
 
   .hero-copy {
-    max-width: 52rem;
+    max-width: 50rem;
   }
 
   .calculator-grid {
-    grid-template-columns: minmax(27rem, 0.88fr) minmax(30rem, 1.12fr);
+    grid-template-columns: minmax(26rem, 0.9fr) minmax(32rem, 1.1fr);
     align-items: start;
-    gap: 1.1rem;
+    gap: 1.25rem;
   }
 
   .future-grid {
     grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 80rem) {
+  .calculator-grid {
+    grid-template-columns: minmax(28rem, 0.82fr) minmax(34rem, 1.18fr);
   }
 }
 
