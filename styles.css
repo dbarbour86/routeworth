@@ -163,6 +163,27 @@ h1 {
   line-height: 0.94;
 }
 
+.hero-brand-phrase {
+  position: relative;
+  display: inline-block;
+  color: var(--blue);
+  letter-spacing: 0.015em;
+  text-shadow: 0 0 34px rgb(15 163 251 / 0.34);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-brand-phrase::after {
+  position: absolute;
+  inset-inline: 0.05em;
+  bottom: 0.02em;
+  height: 0.08em;
+  border-radius: 999px;
+  background: rgb(15 163 251 / 0.5);
+  box-shadow: 0 0 24px rgb(15 163 251 / 0.32);
+  content: "";
+}
+
 .subhead {
   max-width: 38rem;
   margin: 1.25rem 0 0;
