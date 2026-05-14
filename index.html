@@ -54,11 +54,31 @@
                   <output class="net-profit" id="net-profit">$0.00</output>
                   <p class="result-caption">Estimated net profit</p>
                 </div>
-                <span class="rating-badge" id="rating-badge">Bad</span>
+                <div class="rating-block">
+                  <span class="rating-badge" id="rating-badge">Ready</span>
+                  <p class="rating-summary" id="rating-summary">Enter route details to calculate profitability.</p>
+                </div>
               </div>
-              <p class="rating-copy" id="rating-copy">Route details are missing or the current numbers do not cover the operating cost.</p>
+              <p class="rating-copy" id="rating-copy">Enter route details to calculate profitability.</p>
               <div class="result-actions">
-                <button class="secondary-action" type="button" data-track-event="share_clicked">Share route</button>
+                <button class="secondary-action" type="button" id="share-route">Share Route</button>
+                <button class="secondary-action quiet-action" type="button" id="save-screenshot">Save Screenshot</button>
+              </div>
+              <div class="breakdown-card" id="breakdown-card">
+                <div class="mini-heading">
+                  <span>Cost breakdown</span>
+                  <strong id="take-home-percent">0%</strong>
+                </div>
+                <div class="breakdown-bar" aria-label="Route cost breakdown">
+                  <span class="breakdown-fill take-home" id="take-home-bar"></span>
+                  <span class="breakdown-fill fuel" id="fuel-bar"></span>
+                  <span class="breakdown-fill maintenance" id="maintenance-bar"></span>
+                </div>
+                <div class="breakdown-legend">
+                  <span><i class="dot take-home-dot"></i>Take-home</span>
+                  <span><i class="dot fuel-dot"></i>Fuel</span>
+                  <span><i class="dot maintenance-dot"></i>Maintenance</span>
+                </div>
               </div>
               <div class="metric-stack">
                 <div class="metric-row"><span>Estimated fuel cost</span><output id="fuel-cost">$0.00</output></div>
@@ -67,6 +87,18 @@
                 <div class="metric-row accent"><span>Profit per mile</span><output id="profit-mile">$0.00</output></div>
                 <div class="metric-row accent"><span>Effective hourly rate</span><output id="hourly-rate">$0.00</output></div>
               </div>
+              <section class="projection-card" aria-label="Route income projections">
+                <label for="days-per-week">How many days per week would you run this route?</label>
+                <div class="projection-input">
+                  <input id="days-per-week" inputmode="numeric" min="1" max="7" type="number" value="5" />
+                  <span>days/week</span>
+                </div>
+                <div class="projection-grid">
+                  <div><span>Weekly</span><output id="weekly-income">$0.00</output></div>
+                  <div><span>Monthly</span><output id="monthly-income">$0.00</output></div>
+                  <div><span>Yearly</span><output id="yearly-income">$0.00</output></div>
+                </div>
+              </section>
               <div class="thresholds" aria-label="Route rating thresholds">
                 <div><strong class="bad-text">Bad</strong><span>&lt; $20/hr</span></div>
                 <div><strong class="watch-text">Watch</strong><span>$20-29/hr</span></div>
@@ -104,6 +136,11 @@
       </section>
 
       <footer>Built for independent couriers.</footer>
+      <div class="mobile-action-bar" aria-label="Quick route actions">
+        <button type="button" id="mobile-share-route">Share</button>
+        <button type="button" id="mobile-save-screenshot">Screenshot</button>
+      </div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
     </main>
     <script src="./app.js"></script>
   </body>
